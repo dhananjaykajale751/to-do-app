@@ -1,0 +1,152 @@
+html {
+    background-color: red;
+    background-image: -webkit-linear-gradient(65deg, red 50%, #E4E9FD 50%);
+    min-height: 1000px;
+    font-family: 'helvetica neue';
+}
+
+h1 {
+    color: #fff;
+    padding: 10px;
+}
+
+.box {
+    max-width: 500px; /* Extended width of the main todo box */
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#heading {
+    background-color: goldenrod;
+    text-align: center;
+}
+
+.item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #F1F1F1;
+    padding: 10px;
+}
+
+.item:last-child {
+    border-bottom: 0;
+}
+
+.task-content {
+    flex-grow: 1; /* Allows task content to take up available space */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-details {
+    display: flex;
+    align-items: center;
+    margin-top: 5px; /* Space between task content and timestamp */
+}
+
+.toggle-timestamp {
+    border: none;
+    background: transparent;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.task-timestamp {
+    display: none; /* Hidden by default */
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px; /* Space from the task content */
+}
+
+.delete-button {
+    border: none;
+    background: transparent;
+    color: red;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.delete-button i {
+    font-size: 18px; /* Adjust icon size if needed */
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#search-input {
+    height: 60px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 200;
+    width: 300px;
+    text-align: center;
+    border-radius: 5px 0 0 5px;
+    padding: 0 10px;
+}
+
+#search-form button {
+    height: 60px;
+    width: 60px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-form button i {
+    font-size: 20px;
+}
+
+#search-form button:hover {
+    background-color: #0056b3;
+}
+
+/* New Item Form Styles */
+form.item {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #F1F1F1;
+    padding: 10px;
+}
+
+form.item input[type="text"] {
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 0 10px;
+    flex-grow: 1; /* Takes up available space */
+    margin-right: 10px; /* Space between input and button */
+}
+
+form.item button {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form.item button:hover {
+    background-color: #0056b3;
+}

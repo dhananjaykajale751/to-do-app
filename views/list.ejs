@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Correct path for styles.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="/scripts.js" defer></script>
+</head>
+
+<body>
+    <div class="box" id="heading">
+        <h1><%= kindOfDay %></h1>
+    </div>
+
+    <div class="box">
+        <!-- Search Form -->
+        <form id="search-form" method="get">
+            <input type="text" id="search-input" name="query" placeholder="Search tasks..." autocomplete="off">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+
+        <!-- Display tasks -->
+        <% newListItems.forEach((item, index) => { %>
+            <div class="item">
+                <input type="checkbox">
+                <div class="task-content">
+                    <p class="task-title"><%= item.title %></p> <!-- Display task title -->
+                    <div class="task-details">
+                        <button class="toggle-timestamp" onclick="toggleTimestamp(<%= index %>)">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <p class="task-timestamp" id="timestamp-<%= index %>"><%= item.timestamp %></p> <!-- Display task timestamp -->
+                    </div>
+                </div>
+                <!-- Delete Button -->
+                <form action="/delete" method="post" class="delete-form">
+                    <input type="hidden" name="index" value="<%= index %>">
+                    <button type="submit" class="delete-button"><i class="fas fa-trash"></i></button>
+                </form>
+            </div>
+        <% }) %>
+
+        <!-- Add new item -->
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit">+</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to handle search functionality
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const items = document.querySelectorAll('.item');
+            items.forEach(item => {
+                const text = item.querySelector('.task-title').textContent.toLowerCase();
+                item.style.display = text.includes(query) ? 'flex' : 'none';
+            });
+        });
+
+        // JavaScript to handle timestamp toggle
+        function toggleTimestamp(index) {
+            const timestampElement = document.getElementById(`timestamp-${index}`);
+            timestampElement.style.display = timestampElement.style.display === 'none' || !timestampElement.style.display ? 'block' : 'none';
+        }
+    </script>
+</body>
+
+</html>
